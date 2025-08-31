@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #e0e0e0;
+      font-family: Arial, sans-serif;
+    }
+
+    .auth-box {
+      background: linear-gradient(180deg, #d8dce0, #cdd0d5);
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .auth-box h2 {
+      margin: 0 0 25px 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .auth-box p {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .auth-box .telegram-btn {
+      display: inline-block;
+      background: #0088cc;
+      color: #fff;
+      padding: 12px 22px;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .auth-box .telegram-btn:hover {
+      background: #0077b6;
+    }
+
+    .auth-box img {
+      margin-top: 20px;
+      width: 90px;
+    }
+
+    .auth-box small {
+      display: block;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #fff;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-box">
+    <h2>Авторизация</h2>
+    <p>Войти с помощью</p>
+    <a class="telegram-btn" href="#" onclick="login()">TELEGRAM</a>
+    <br>
+    <img src="https://i.ibb.co/zNPqZLw/chelepizdrik.png" alt="Персонаж">
+    <small>«Безопасная авторизация через Telegram»</small>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function login() {
+      const user = tg.initDataUnsafe?.user;
+      if (user) {
+        alert("Привет, " + user.first_name + "!");
+      } else {
+        alert("Не удалось получить данные пользователя.");
+      }
+    }
+  </script>
+</body>
+</html>
